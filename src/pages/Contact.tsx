@@ -489,7 +489,7 @@ export default function Contact() {
                   href="mailto:support@bitpulse.io"
                   className="text-[#00FF9D] font-mono text-sm hover:underline drop-shadow-[0_0_4px_rgba(0,255,157,0.5)]"
                 >
-                  support@bitpulse.io
+                  support@bitpulse.site
                 </a>
               </div>
             </div>
