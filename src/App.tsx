@@ -215,7 +215,6 @@ function RouteChangeHandler({ children }: { children: React.ReactNode }) {
   const [isLoading, setIsLoading] = useState(false);
   const [prevLocation, setPrevLocation] = useState(location.pathname);
   const [isCommandPaletteOpen, setIsCommandPaletteOpen] = useState(false);
-  const { isLocked } = useGlobal();
   
   // Command Palette hotkey
   useEffect(() => {
@@ -251,7 +250,6 @@ function RouteChangeHandler({ children }: { children: React.ReactNode }) {
         isOpen={isCommandPaletteOpen} 
         onClose={() => setIsCommandPaletteOpen(false)} 
       />
-      {isLocked && <SessionLockOverlay />}
       {children}
     </>
   );

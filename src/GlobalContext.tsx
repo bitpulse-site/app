@@ -322,6 +322,31 @@ export function GlobalProvider({ children }: { children: React.ReactNode }) {
     };
   }, []);
 
+
+  /* ═════════════════════════════════════════════════════════════════
+     TAB VISIBILITY AUTO-PAUSE
+     Pauses the WebSocket when the user switches tabs to save bandwidth
+     ═════════════════════════════════════════════════════════════════ */
+  useEffect(() => {
+    const handleVisibilityChange = () => {
+      if (!socketRef.current) return;
+      
+      if (document.visibilityState === 'hidden') {
+        console.log('[SOCKET] ⏸️ Tab hidden: Pausing WebSocket to save server bandwidth.');
+        socketRef.current.disconnect();
+      } else {
+        console.log('[SOCKET] ▶️ Tab active: Reconnecting WebSocket for live market data.');
+        socketRef.current.connect();
+      }
+    };
+
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+    
+    return () => {
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+    };
+  }, []);
+
   /* ═════════════════════════════════════════════════════════════════
      FALLBACK: Fetch signals via HTTP GET on mount
      If the socket history event is delayed or missed, this ensures
