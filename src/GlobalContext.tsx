@@ -6,8 +6,8 @@ import type { User, Signal, Trade, IgnoredSignal, MissedSignal } from './types';
    API CLIENT
    ═══════════════════════════════════════════════════════════════════════ */
 
-const API_BASE_URL = 'http://localhost:5000/api';
-const SOCKET_URL = 'http://localhost:5000';
+const API_BASE_URL = 'https://bitpulse-api.onrender.com/api';
+const SOCKET_URL = 'https://bitpulse-api.onrender.com';
 
 /**
  * Lightweight fetch wrapper that:
