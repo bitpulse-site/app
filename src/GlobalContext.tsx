@@ -401,6 +401,23 @@ export function GlobalProvider({ children }: { children: React.ReactNode }) {
     };
   }, []);
 
+  /* ── Tab Visibility Auto-Pause ── */
+  useEffect(() => {
+    const handleVisibilityChange = () => {
+      if (!socketRef.current) return;
+      if (document.visibilityState === 'hidden') {
+        console.log('[SOCKET] ⏸️ Tab hidden: Pausing WebSocket.');
+        socketRef.current.disconnect();
+      } else {
+        console.log('[SOCKET] ▶️ Tab active: Reconnecting WebSocket.');
+        socketRef.current.connect();
+      }
+    };
+
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+    return () => document.removeEventListener('visibilitychange', handleVisibilityChange);
+  }, []);
+
   /* ═════════════════════════════════════════════════════════════════
      SESSION RECOVERY — runs once on mount
      If a token exists in localStorage, verify it against the API.

@@ -137,13 +137,12 @@ export default function TopNavigation() {
     }
   }, [tickerData]);
 
-  // ── CoinGecko fetch ─────────────────────────────────────────────────
+// ── Updated Market Data Fetch (via Backend Proxy) ───────────────────
   useEffect(() => {
     const fetchTickerData = async () => {
       try {
-        const response = await fetch(
-          'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,solana,ripple,binancecoin&vs_currencies=usd&include_24hr_change=true'
-        );
+        // Use your relative backend route to avoid CORS
+        const response = await fetch('/api/prices'); 
         if (response.ok) {
           const data = await response.json();
           setTickerData(data);
@@ -160,9 +159,25 @@ export default function TopNavigation() {
     };
 
     fetchTickerData();
-    const interval = setInterval(fetchTickerData, 30000);
+    const interval = setInterval(fetchTickerData, 60000); // 1 minute refresh
     return () => clearInterval(interval);
   }, []);
+
+  // ── Pulse Indicator Logic ──────────────────────────────────────────
+  const getMarketPulse = () => {
+    if (!tickerData) return { label: 'Syncing', color: 'text-gray-500' };
+    const changes = [
+      tickerData.bitcoin?.usd_24h_change || 0,
+      tickerData.ethereum?.usd_24h_change || 0,
+      tickerData.solana?.usd_24h_change || 0
+    ];
+    const average = changes.reduce((a, b) => a + b, 0) / changes.length;
+    
+    if (average > 1) return { label: 'Bullish Pulse', color: 'text-[#00FF9D]', glow: 'shadow-[0_0_10px_rgba(0,255,157,0.5)]' };
+    if (average < -1) return { label: 'Bearish Pulse', color: 'text-[#FF3366]', glow: 'shadow-[0_0_10px_rgba(255,51,102,0.5)]' };
+    return { label: 'Neutral Pulse', color: 'text-gray-400', glow: '' };
+  };
+  const pulse = getMarketPulse();
 
   // ── Close profile on outside click ──────────────────────────────────
   useEffect(() => {
@@ -560,7 +575,7 @@ export default function TopNavigation() {
               </Link>
             ))}
 
-            {isLoggedIn ? (
+            {/*{isLoggedIn ? (
               <>
                 <Link
                   to="/portfolio"
@@ -596,7 +611,7 @@ export default function TopNavigation() {
                   Register
                 </Link>
               </>
-            )}
+            )}*/}
 
             {/* Mobile Feed Status */}
             <div className="flex items-center space-x-2 px-3 py-3 pt-3 border-t border-white/[0.05] mt-2">
