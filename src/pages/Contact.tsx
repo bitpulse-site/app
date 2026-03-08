@@ -15,7 +15,10 @@ import {
    CONSTANTS
    ═══════════════════════════════════════════════════════════════════════ */
 
-const API_BASE_URL = 'http://localhost:5000/api';
+// Dynamically use the live Render URL if on Vercel, otherwise use localhost
+const API_BASE_URL = import.meta.env.VITE_API_URL 
+  ? `${import.meta.env.VITE_API_URL.replace(/\/$/, '')}/api` 
+  : 'http://localhost:5000/api';
 
 /* ═══════════════════════════════════════════════════════════════════════
    TYPES
