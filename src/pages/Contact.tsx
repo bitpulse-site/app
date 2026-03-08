@@ -486,7 +486,7 @@ export default function Contact() {
                   General Inquiries &amp; Support
                 </p>
                 <a
-                  href="mailto:support@bitpulse.io"
+                  href="mailto:support@bitpulse.site"
                   className="text-[#00FF9D] font-mono text-sm hover:underline drop-shadow-[0_0_4px_rgba(0,255,157,0.5)]"
                 >
                   support@bitpulse.site
