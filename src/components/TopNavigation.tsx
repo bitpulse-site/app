@@ -334,7 +334,7 @@ export default function TopNavigation() {
               { to: '/signals', label: 'Signals', activePath: '/signals' },
               { to: '/articles', label: 'Articles', activePath: '/articles', id: 'nav-articles' },
               { to: '/market-analysis', label: 'Analysis', activePath: '/market-analysis' },
-              { to: '/signal-history', label: 'History', activePath: '/signal-history' },
+              { to: '/signal-history', label: '', activePath: '/signal-history' },
             ].map((link) => (
               <Link
                 key={link.label}
