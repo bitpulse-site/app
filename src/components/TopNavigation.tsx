@@ -334,7 +334,7 @@ export default function TopNavigation() {
               { to: '/signals', label: 'Signals', activePath: '/signals' },
               { to: '/articles', label: 'Articles', activePath: '/articles', id: 'nav-articles' },
               { to: '/market-analysis', label: 'Analysis', activePath: '/market-analysis' },
-              {/*{ to: '/signal-history', label: 'History', activePath: '/signal-history' },*/}
+              { to: '/signal-history', label: 'History', activePath: '/signal-history' },
             ].map((link) => (
               <Link
                 key={link.label}
@@ -557,7 +557,7 @@ export default function TopNavigation() {
             {[
               { to: '/', label: 'Home', path: '/' },
               { to: '/signals', label: 'Signals', path: '/signals' },
-              {/*{ to: '/signal-history', label: 'Signal History', path: '/signal-history' },*/}
+              { to: '/signal-history', label: 'Signal History', path: '/signal-history' },
               { to: '/articles', label: 'Articles', path: '/articles' },
               { to: '/market-analysis', label: 'Analysis', path: '/market-analysis' },
             ].map((link) => (
