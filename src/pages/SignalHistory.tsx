@@ -364,7 +364,7 @@ export default function SignalHistory() {
     );
   }
 
-  /* ═════════════════════════���═════════════════════════════════════════
+  /* ════════════════════════════════════════════════════════════════════
      MAIN RENDER
      ═══════════════════════════════════════════════════════════════════ */
   return (
@@ -426,111 +426,70 @@ export default function SignalHistory() {
           </div>
         </div>
 
-        {/* ── Elite Risk Metrics — 6 Glowing Cards ─────────────────── */}
+        {/* ── Elite Risk Metrics — Premium Institutional Glass ────────── */}
         <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-4 mb-14">
           {[
-            {
-              label: 'Accuracy',
-              icon: <Target className="w-4 h-4" />,
-              value: `${metrics.overallAccuracy.toFixed(1)}%`,
-              sub: `${metrics.totalSuccessful} / ${metrics.totalSignals} signals`,
-              color: 'green' as const,
-            },
-            {
-              label: 'Avg Return',
-              icon: <TrendingUp className="w-4 h-4" />,
-              value: `+${metrics.avgMonthlyReturn.toFixed(1)}%`,
-              sub: 'Per month',
-              color: 'green' as const,
-            },
-            {
-              label: 'Accuracy Ratio',
-              icon: <Gauge className="w-4 h-4" />,
-              value: metrics.sharpeRatio.toFixed(2),
-              sub: 'Annualised',
-              color: 'white' as const,
-            },
-            {
-              label: 'Profit Factor',
-              icon: <FlaskConical className="w-4 h-4" />,
-              value: metrics.profitFactor.toFixed(2),
-              sub: 'Gross P / L',
-              color: 'white' as const,
-            },
-            {
-              label: 'Max Drawdown',
-              icon: <TrendingDown className="w-4 h-4" />,
-              value: `${metrics.maxDrawdown.toFixed(1)}%`,
-              sub: 'Peak to trough',
-              color: 'red' as const,
-            },
-            {
-              label: 'Avg R:R',
-              icon: <Clock className="w-4 h-4" />,
-              value: metrics.avgRR.toFixed(1),
-              sub: 'ATR-based TP/SL',
-              color: 'white' as const,
-            },
+            { label: 'Accuracy', icon: <Target className="w-4 h-4" />, value: `${metrics.overallAccuracy.toFixed(1)}%`, tag: '[STRIKE_RATE]', color: 'green' },
+            { label: 'Avg Return', icon: <TrendingUp className="w-4 h-4" />, value: `+${metrics.avgMonthlyReturn.toFixed(1)}%`, tag: '[ALPHA_YIELD]', color: 'green' },
+            { label: 'Accuracy Ratio', icon: <Gauge className="w-4 h-4" />, value: metrics.sharpeRatio.toFixed(2), tag: '[RISK_ADJ]', color: 'white' },
+            { label: 'Profit Factor', icon: <FlaskConical className="w-4 h-4" />, value: metrics.profitFactor.toFixed(2), tag: '[EFFICIENCY]', color: 'white' },
+            { label: 'Max Drawdown', icon: <TrendingDown className="w-4 h-4" />, value: `${metrics.maxDrawdown.toFixed(1)}%`, tag: '[EXPOSURE]', color: 'red' },
+            { label: 'Avg R:R', icon: <Clock className="w-4 h-4" />, value: metrics.avgRR.toFixed(1), tag: '[EXPECTANCY]', color: 'white' },
           ].map((card) => (
             <div
               key={card.label}
-              className={`relative bg-[#151A22]/90 backdrop-blur-md rounded-2xl p-5 shadow-[0_4px_20px_rgba(0,0,0,0.3)] hover:shadow-[0_8px_30px_rgba(0,255,157,0.12)] hover:-translate-y-1 transition-all duration-300 group overflow-hidden border-t-2 ${
-                card.color === 'red'
-                  ? 'border-[#FF3366] border-b border-r border-l border-b-[#FF3366]/10 border-r-[#FF3366]/10 border-l-[#FF3366]/10'
-                  : card.color === 'green'
-                  ? 'border-[#00FF9D] border-b border-r border-l border-b-[#00FF9D]/10 border-r-[#00FF9D]/10 border-l-[#00FF9D]/10'
-                  : 'border-white/20 border-b border-r border-l border-b-white/[0.04] border-r-white/[0.04] border-l-white/[0.04]'
+              className={`relative overflow-hidden bg-[#151A22]/90 border border-white/5 backdrop-blur-xl rounded-2xl p-5 shadow-[0_0_40px_rgba(0,0,0,0.3)] group transition-all duration-500 ${
+                card.color === 'red' ? 'hover:border-[#FF3366]/30' : card.color === 'green' ? 'hover:border-[#00FF9D]/30' : 'hover:border-white/20'
               }`}
             >
-              <div
-                className={`absolute inset-0 pointer-events-none ${
-                  card.color === 'red'
-                    ? 'bg-[radial-gradient(ellipse_at_top,rgba(255,51,102,0.05)_0%,transparent_60%)]'
-                    : 'bg-[radial-gradient(ellipse_at_top,rgba(0,255,157,0.04)_0%,transparent_60%)]'
-                }`}
-              />
-              <div className="relative">
-                <div className="flex items-center space-x-2 text-gray-500 mb-3">
-                  <span
-                    className={`transition-colors duration-300 ${
-                      card.color === 'red'
-                        ? 'group-hover:text-[#FF3366]'
-                        : 'group-hover:text-[#00FF9D]'
-                    }`}
-                  >
-                    {card.icon}
-                  </span>
-                  <span className="font-mono text-[9px] font-bold uppercase tracking-[0.15em]">{card.label}</span>
+              {/* Dynamic Ambient Glow Orb */}
+              <div className={`absolute top-0 right-0 w-32 h-32 rounded-full blur-3xl -translate-y-8 translate-x-8 group-hover:opacity-100 opacity-30 transition-all duration-700 pointer-events-none ${
+                card.color === 'red' ? 'bg-[#FF3366]/[0.08]' : card.color === 'green' ? 'bg-[#00FF9D]/[0.08]' : 'bg-white/[0.04]'
+              }`} />
+              
+              <div className="relative flex items-center justify-between mb-4">
+                <div className={`w-8 h-8 rounded-lg flex items-center justify-center border ${
+                  card.color === 'red' ? 'bg-[#FF3366]/10 border-[#FF3366]/20 text-[#FF3366]' : card.color === 'green' ? 'bg-[#00FF9D]/10 border-[#00FF9D]/20 text-[#00FF9D]' : 'bg-white/5 border-white/10 text-gray-400'
+                }`}>
+                  {card.icon}
                 </div>
-                <p
-                  className={`font-mono text-4xl font-bold tracking-tight ${
-                    card.color === 'green'
-                      ? 'text-transparent bg-clip-text bg-gradient-to-r from-[#00FF9D] to-[#00CC7D] drop-shadow-[0_0_10px_rgba(0,255,157,0.8)]'
-                      : card.color === 'red'
-                      ? 'text-transparent bg-clip-text bg-gradient-to-r from-[#FF3366] to-[#FF6B8A] drop-shadow-[0_0_10px_rgba(255,51,102,0.8)]'
-                      : 'text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400'
-                  }`}
-                >
+                <span className="font-mono text-[8px] font-bold text-gray-600 tracking-[0.2em] group-hover:text-gray-400 transition-colors">
+                  {card.tag}
+                </span>
+              </div>
+
+              <div className="relative">
+                <h3 className="text-gray-500 font-mono text-[9px] uppercase tracking-[0.15em] mb-1">{card.label}</h3>
+                <p className={`font-mono text-2xl font-bold tracking-tight drop-shadow-[0_0_8px_rgba(0,0,0,0.5)] ${
+                  card.color === 'red' ? 'text-[#FF3366]' : card.color === 'green' ? 'text-[#00FF9D]' : 'text-gray-100'
+                }`}>
                   {card.value}
                 </p>
-                <p className="text-gray-600 font-mono text-[9px] mt-2.5 tracking-[0.15em] uppercase">{card.sub}</p>
+                <div className="mt-2 flex items-center gap-1.5">
+                  <div className={`w-1 h-1 rounded-full ${card.color === 'red' ? 'bg-[#FF3366]' : card.color === 'green' ? 'bg-[#00FF9D]' : 'bg-gray-400'}`} />
+                  <span className="text-[8px] font-mono text-gray-600 uppercase tracking-wider">Node Verified</span>
+                </div>
               </div>
             </div>
           ))}
         </div>
 
-        {/* ── Highlight Cards ──────────────────────────────────────── */}
+        {/* ── Highlight Cards — Premium Institutional Glass ─────────── */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-14">
           {/* Best Month */}
-          <div className="relative overflow-hidden bg-[#151A22]/90 border border-[#00FF9D]/20 backdrop-blur-md rounded-2xl p-8 shadow-[0_4px_30px_rgba(0,0,0,0.3)] hover:shadow-[0_8px_40px_rgba(0,255,157,0.1)] hover:border-[#00FF9D]/30 transition-all duration-300 group">
-            <div className="absolute inset-0 bg-gradient-to-br from-[#00FF9D]/[0.06] via-transparent to-transparent pointer-events-none" />
-            <div className="absolute top-0 right-0 w-40 h-40 bg-[#00FF9D]/[0.04] rounded-full blur-[80px] -translate-y-10 translate-x-10 pointer-events-none" />
+          <div className="relative overflow-hidden bg-[#151A22]/90 border border-white/5 backdrop-blur-xl rounded-2xl p-8 shadow-[0_0_40px_rgba(0,0,0,0.3)] hover:border-[#00FF9D]/30 transition-all duration-500 group">
+            <div className="absolute top-0 right-0 w-48 h-48 bg-[#00FF9D]/[0.04] rounded-full blur-[80px] -translate-y-12 translate-x-12 group-hover:bg-[#00FF9D]/[0.08] transition-all duration-700 pointer-events-none" />
             <div className="relative">
-              <div className="flex items-center space-x-2 mb-5">
-                <Zap className="w-5 h-5 text-[#00FF9D] drop-shadow-[0_0_10px_rgba(0,255,157,0.9)]" />
-                <span className="font-mono text-[10px] font-bold text-gray-400 uppercase tracking-[0.15em]">Best Month</span>
+              <div className="flex items-center justify-between mb-6">
+                <div className="flex items-center space-x-3">
+                  <div className="w-10 h-10 rounded-xl bg-[#00FF9D]/10 border border-[#00FF9D]/20 flex items-center justify-center text-[#00FF9D] shadow-[0_0_15px_rgba(0,255,157,0.1)]">
+                    <Zap className="w-5 h-5" />
+                  </div>
+                  <span className="font-mono text-[10px] font-bold text-gray-500 uppercase tracking-[0.15em]">Best Month</span>
+                </div>
+                <span className="font-mono text-[9px] text-[#00FF9D]/40 uppercase tracking-[0.2em]">[PEAK_PERF]</span>
               </div>
-              <p className="font-mono text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#00FF9D] to-[#00CC7D] mb-2 drop-shadow-[0_0_12px_rgba(0,255,157,0.8)]">
+              <p className="font-mono text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#00FF9D] to-[#00CC7D] mb-2 drop-shadow-[0_0_12px_rgba(0,255,157,0.5)]">
                 {metrics.bestMonth ? `${metrics.bestMonth.accuracy.toFixed(1)}%` : '—'}
               </p>
               <p className="font-mono text-gray-500 text-[10px] uppercase tracking-[0.15em]">
@@ -542,15 +501,19 @@ export default function SignalHistory() {
           </div>
 
           {/* Total Signals Fired */}
-          <div className="relative overflow-hidden bg-[#151A22]/90 border border-cyan-400/20 backdrop-blur-md rounded-2xl p-8 shadow-[0_4px_30px_rgba(0,0,0,0.3)] hover:shadow-[0_8px_40px_rgba(34,211,238,0.1)] hover:border-cyan-400/30 transition-all duration-300 group">
-            <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/[0.06] via-transparent to-transparent pointer-events-none" />
-            <div className="absolute top-0 right-0 w-40 h-40 bg-cyan-400/[0.04] rounded-full blur-[80px] -translate-y-10 translate-x-10 pointer-events-none" />
+          <div className="relative overflow-hidden bg-[#151A22]/90 border border-white/5 backdrop-blur-xl rounded-2xl p-8 shadow-[0_0_40px_rgba(0,0,0,0.3)] hover:border-cyan-400/30 transition-all duration-500 group">
+            <div className="absolute top-0 right-0 w-48 h-48 bg-cyan-400/[0.04] rounded-full blur-[80px] -translate-y-12 translate-x-12 group-hover:bg-cyan-400/[0.08] transition-all duration-700 pointer-events-none" />
             <div className="relative">
-              <div className="flex items-center space-x-2 mb-5">
-                <BarChart3 className="w-5 h-5 text-cyan-400 drop-shadow-[0_0_10px_rgba(34,211,238,0.8)]" />
-                <span className="font-mono text-[10px] font-bold text-gray-400 uppercase tracking-[0.15em]">Total Signals Fired</span>
+              <div className="flex items-center justify-between mb-6">
+                <div className="flex items-center space-x-3">
+                  <div className="w-10 h-10 rounded-xl bg-cyan-400/10 border border-cyan-400/20 flex items-center justify-center text-cyan-400 shadow-[0_0_15px_rgba(34,211,238,0.1)]">
+                    <BarChart3 className="w-5 h-5" />
+                  </div>
+                  <span className="font-mono text-[10px] font-bold text-gray-500 uppercase tracking-[0.15em]">Total Signals Fired</span>
+                </div>
+                <span className="font-mono text-[9px] text-cyan-400/40 uppercase tracking-[0.2em]">[VOL_SCAN]</span>
               </div>
-              <p className="font-mono text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-cyan-300 mb-2">
+              <p className="font-mono text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-cyan-300 mb-2 drop-shadow-[0_0_12px_rgba(34,211,238,0.5)]">
                 {metrics.totalSignals.toLocaleString()}
               </p>
               <p className="font-mono text-gray-500 text-[10px] uppercase tracking-[0.15em]">
@@ -560,15 +523,19 @@ export default function SignalHistory() {
           </div>
 
           {/* Engine Uptime */}
-          <div className="relative overflow-hidden bg-[#151A22]/90 border border-purple-500/20 backdrop-blur-md rounded-2xl p-8 shadow-[0_4px_30px_rgba(0,0,0,0.3)] hover:shadow-[0_8px_40px_rgba(168,85,247,0.1)] hover:border-purple-500/30 transition-all duration-300 group">
-            <div className="absolute inset-0 bg-gradient-to-br from-purple-500/[0.06] via-transparent to-transparent pointer-events-none" />
-            <div className="absolute top-0 right-0 w-40 h-40 bg-purple-500/[0.04] rounded-full blur-[80px] -translate-y-10 translate-x-10 pointer-events-none" />
+          <div className="relative overflow-hidden bg-[#151A22]/90 border border-white/5 backdrop-blur-xl rounded-2xl p-8 shadow-[0_0_40px_rgba(0,0,0,0.3)] hover:border-purple-500/30 transition-all duration-500 group">
+            <div className="absolute top-0 right-0 w-48 h-48 bg-purple-500/[0.04] rounded-full blur-[80px] -translate-y-12 translate-x-12 group-hover:bg-purple-500/[0.08] transition-all duration-700 pointer-events-none" />
             <div className="relative">
-              <div className="flex items-center space-x-2 mb-5">
-                <Activity className="w-5 h-5 text-purple-400 drop-shadow-[0_0_10px_rgba(168,85,247,0.8)]" />
-                <span className="font-mono text-[10px] font-bold text-gray-400 uppercase tracking-[0.15em]">Engine Uptime</span>
+              <div className="flex items-center justify-between mb-6">
+                <div className="flex items-center space-x-3">
+                  <div className="w-10 h-10 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400 shadow-[0_0_15px_rgba(168,85,247,0.1)]">
+                    <Activity className="w-5 h-5" />
+                  </div>
+                  <span className="font-mono text-[10px] font-bold text-gray-500 uppercase tracking-[0.15em]">Engine Uptime</span>
+                </div>
+                <span className="font-mono text-[9px] text-purple-500/40 uppercase tracking-[0.2em]">[SYS_HLTH]</span>
               </div>
-              <p className="font-mono text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-purple-300 mb-2">
+              <p className="font-mono text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-purple-300 mb-2 drop-shadow-[0_0_12px_rgba(168,85,247,0.5)]">
                 99.97%
               </p>
               <p className="font-mono text-gray-500 text-[10px] uppercase tracking-[0.15em]">
