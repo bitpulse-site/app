@@ -1135,11 +1135,11 @@ export default function Home() {
               {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
                 <Link
-                  to="/Download"
+                  to=""
                   className="flex items-center space-x-3 px-10 py-5 bg-[#00FF9D] text-[#0B0E14] rounded-xl font-bold text-lg tracking-tight hover:bg-[#00CC7D] transition-all shadow-[0_0_30px_rgba(0,255,157,0.3)] hover:shadow-[0_0_50px_rgba(0,255,157,0.5)] hover:scale-[1.02] active:scale-[0.98]"
                 >
                   <Zap className="w-5 h-5" />
-                  <span>Download Our App</span>
+                  <span>App Coming Soon</span>
                 </Link>
                 <Link
                   to="/articles"
