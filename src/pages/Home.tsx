@@ -1303,11 +1303,11 @@ export default function Home() {
       />*/}
       
       {/* BEGIN AADS AD UNIT 2430100 */}
-      <div id="frame" style={{ width: '728px', margin: 'auto', zIndex: 99998, height: 'auto' }}>
+      <div id="frame" style={{ width: '100%', margin: 'auto', position: 'relative', zIndex: 99998 }}>
         <iframe 
           data-aa="2430100" 
           src="//ad.a-ads.com/2430100/?size=728x90&background_color=000000&title_color=226400" 
-          style={{ border: 0, padding: 0, width: '728px', height: '90px', overflow: 'hidden', display: 'block', margin: 'auto' }}
+          style={{ border: 0, padding: 0, width: '70%', height: 'auto', overflow: 'hidden', display: 'block', margin: 'auto' }}
         ></iframe>
       </div>
       {/* END AADS AD UNIT 2430100 */}
