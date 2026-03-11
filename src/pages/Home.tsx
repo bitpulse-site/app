@@ -1597,10 +1597,20 @@ export default function Home() {
       {/* ════════════════════════════════════════════════════════════════
          AD PLACEMENT — IN-FEED BILLBOARD (970×250)
          ════════════════════════════════════════════════════════════════ */}
-      <DynamicAdNode
+      {/*<DynamicAdNode
         id="ad-infeed-billboard"
         className="w-full max-w-[970px] h-[250px] mx-auto my-16"
-      />
+      />*/}
+      
+      {/* BEGIN AADS AD UNIT 2430097 */}
+      <div id="frame" style={{ width: '100%', margin: 'auto', position: 'relative', zIndex: 99998 }}>
+        <iframe 
+          data-aa="2430097" 
+          src="//acceptable.a-ads.com/2430097/?size=Adaptive&background_color=000000&title_color=003f02&title_hover_color=07336e" 
+          style={{ border: 0, padding: 0, width: '70%', height: 'auto', overflow: 'hidden', display: 'block', margin: 'auto' }}
+        ></iframe>
+      </div>
+      {/* END AADS AD UNIT 2430097 */}
 
       {/* ════════════════════════════════════════════════════════════════
          LATEST ARTICLES
