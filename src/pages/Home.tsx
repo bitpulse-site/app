@@ -1572,15 +1572,18 @@ export default function Home() {
                 {/* ── RIGHT: Order Book Ad Node ────────────────────── */}
                 {/*<OrderBookAdNode />*/}
 
-                {/* BEGIN AADS AD UNIT 2430105 */}
-                <div id="frame" style={{ width: '100%', margin: 'auto', position: 'relative', zIndex: 99998 }}>
-                <iframe 
-                  data-aa="2430105" 
-                  src="//acceptable.a-ads.com/2430105/?size=Adaptive&background_color=0c0000&title_color=d9d9d9" 
-                  style={{ border: 0, padding: 0, width: '70%', height: 'auto', overflow: 'hidden', display: 'block', margin: 'auto' }}
-                ></iframe>
+                {/* ── RIGHT: Order Book Ad Node ────────────────────── */}
+                <div className="hidden xl:flex flex-col border-l border-white/[0.06] bg-[#0A0D13]/80 relative overflow-hidden w-[300px] min-h-[410px] items-center justify-center p-4">
+                  {/* BEGIN AADS AD UNIT 2430105 */}
+                  <div id="frame" style={{ width: '100%', margin: 'auto', position: 'relative', zIndex: 99998 }}>
+                    <iframe 
+                     data-aa="2430105" 
+                     src="//acceptable.a-ads.com/2430105/?size=Adaptive&background_color=0c0000&title_color=d9d9d9" 
+                      style={{ border: 0, padding: 0, width: '100%', height: '100%', minHeight: '250px', overflow: 'hidden', display: 'block', margin: 'auto' }}
+                    ></iframe>
+                  </div>
+                  {/* END AADS AD UNIT 2430105 */}
                 </div>
-                {/* END AADS AD UNIT 2430105 */}
 
               </div>
             </div>
