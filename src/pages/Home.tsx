@@ -1068,11 +1068,22 @@ export default function Home() {
         <div className="grid grid-cols-1 xl:grid-cols-[160px_1fr_160px] gap-8 max-w-[1600px] mx-auto px-4">
           {/* ── LEFT AMBIENT DATA PILLAR ──────────────────────────── */}
           <DataSiphonWrapper side="left">
-            <DynamicAdNode
+            {/*<DynamicAdNode
               id="ad-hero-left-skyscraper"
               className="w-[160px] h-[600px]"
               ambient
-            />
+            />*/}
+
+            {/* BEGIN AADS AD UNIT 2430104 */}
+            <div id="frame" style={{ width: '160px', margin: 'auto', zIndex: 99998, height: 'auto' }}>
+              <iframe 
+                data-aa="2430104" 
+                src="//ad.a-ads.com/2430104/?size=160x600&background_color=000000" 
+                style={{ border: 0, padding: 0, width: '160px', height: '600px', overflow: 'hidden', display: 'block', margin: 'auto' }}
+              ></iframe>
+            </div>
+            {/* END AADS AD UNIT 2430104 */}
+
           </DataSiphonWrapper>
 
           {/* ── CENTER: HERO CONTENT ──────────────────────────────── */}
