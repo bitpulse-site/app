@@ -19,7 +19,7 @@ import PrivacyPolicy from './pages/PrivacyPolicy';
 import TermsOfService from './pages/TermsOfService';
 import MarketAnalysis from './pages/MarketAnalysis';
 import { Lock, Search } from 'lucide-react';
-import LiveActivityToast from './components/LiveActivityToast';
+// import LiveActivityToast from './components/LiveActivityToast';
 import SignalScreener from './pages/SignalScreener';
 import ProfileSettings from './pages/ProfileSettings';
 import ScrollToTop from './components/ScrollToTop';
